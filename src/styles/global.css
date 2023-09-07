@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: LTAsus;
+  src: url(/fonts/LTAsusPrintRegular1.otf);
+}
+
+@font-face {
+  font-family: LTAsus;
+  src: url(/fonts/LTAsusPrintBold1.otf);
+}
+
+:root {
+
+}
+
+@layer base {
+  * {
+    @apply font-LTAsus;
+  }
+}
