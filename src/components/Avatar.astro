@@ -1,0 +1,9 @@
+---
+import { Image } from "astro:assets";
+
+const { img, alt } = Astro.props;
+---
+
+<div class='max-w-sm'>
+  <Image src={img} alt={alt} class='rounded-full border-4 border-[--clr-brown] border-double'  />
+</div>
