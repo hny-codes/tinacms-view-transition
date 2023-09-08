@@ -1,7 +1,45 @@
 ---
-import BaseLayout from "../Layouts/BaseLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProfilePic from '../assets/profile.jpg';
+import Navbar from '../components/Navbar.tsx';
+import Avatar from '../components/Avatar.astro';
+import { Image } from "astro:assets";
+
+import Airplane from '../assets/candy/airplane-svgrepo-com.svg';
+import Indicator from '../assets/candy/indicator-svgrepo-com.svg';
 ---
 
 <BaseLayout pageTitle="Emily Eats!">
-	<h1>Astrooooooooo</h1>
+	<div>
+		<div class="pt-28 text-center sm:text-left px-4 sm:px-0 sm:grid grid-cols-2 sm:max-w-6xl sm:mx-auto">
+			<div class="w-2/3 mx-auto sm:order-1 relative">
+				<Avatar img={ProfilePic} alt="Profile picture of me!" />
+				<Image class={'absolute -bottom-8 -right-8 sm:w-2/5'} src={Airplane} alt={'airplane'} width={100} height={100} />
+				<Image class={'absolute -bottom-8 -left-8 sm:w-2/5'} src={Indicator} alt={'indicator'} width={100} height={100} />
+			</div>
+			<div class="mt-14 sm:self-center">
+				<h1 class="text-[#9A2D2F] text-3xl sm:text-5xl mb-4 font-bold">
+				Eating the World - One Stop at a Time!</h1>
+				<p>Hi! My name is Emily and I am a blogger who travel all around the world trying all sorts of cultural delights!</p>
+				<button class="button mt-4"><a href="/posts" class="flex items-center gap-1">
+					See All Posts
+					<svg
+							class="-skew-x-12"
+              xmlns='http://www.w3.org/2000/svg'
+              width='28'
+              height='28'
+              viewBox='0 0 1024 1024'
+            >
+              <path
+                fill='#fff'
+                d='M273.536 736H800a64 64 0 0 0 64-64V256a64 64 0 0 0-64-64H224a64 64 0 0 0-64 64v570.88L273.536 736zM296 800L147.968 918.4A32 32 0 0 1 96 893.44V256a128 128 0 0 1 128-128h576a128 128 0 0 1 128 128v416a128 128 0 0 1-128 128H296z'
+              />
+              <path
+                fill='#fff'
+                d='M512 499.2a51.2 51.2 0 1 1 0-102.4a51.2 51.2 0 0 1 0 102.4zm192 0a51.2 51.2 0 1 1 0-102.4a51.2 51.2 0 0 1 0 102.4zm-384 0a51.2 51.2 0 1 1 0-102.4a51.2 51.2 0 0 1 0 102.4z'
+              />
+            </svg></a></button>
+			</div>
+		</div>
+	</div>
 </BaseLayout>
