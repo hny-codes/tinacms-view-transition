@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { client } from '../../tina/__generated__/client';
+import PostItem from '../components/PostItem.astro';
+import { date } from 'astro/zod';
+
+const postResponse = await client.queries.postConnection();
+
+const posts = postResponse.data.postConnection.edges?.map((post) => {
+  return { slug: post?.node?._sys.filename, title: post?.node?.title, date: post?.node?.posted }
+})
+
+const randomNumber = () => {
+  return Math.floor(Math.random() * 3) + 1
+}
+
+---
+
+<BaseLayout>
+  <div class="pt-28">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-center text-[#9A2D2F] text-3xl sm:text-5xl mb-4 font-bold">Here are all of my blog posts!</h1>
+      <ul class="[&>*]:my-4 mt-10 sm:grid sm:grid-cols-2 gap-6">
+        {posts?.map(post => {
+          return <PostItem slug={post.slug} title={post.title} type={randomNumber()} date={post.date} />
+        })}
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
