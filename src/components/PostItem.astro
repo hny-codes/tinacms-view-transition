@@ -26,12 +26,12 @@ const randomImage = (num: number) => {
 const { slug, title, type, date } = Astro.props;
 ---
 
-<a href=`/posts/${slug}` class="grid grid-cols-2 border-2 border-[--clr-brown] rounded-l-full group">
-  <div class="w-2/3 group-hover:bg-[--clr-pink] rounded-full transition">
+<a href=`/posts/${slug}` class="grid grid-cols-2 border-2 border-[--clr-brown] rounded-full group">
+  <div class="w-2/3 group-hover:bg-[--clr-pink] group-hover:rotate-3 rounded-full transition">
     <Avatar img={randomImage(type)} alt="Random post image" />
   </div>
-  <div class="self-center">
-    <h2 class="truncate text-xl group-hover:-skew-x-12 transition">{title}</h2>
-    <h3 class="text-sm">Date: {new Date(date).toLocaleDateString()}</h3>
+  <div class="self-center pr-2">
+    <h2 class="truncate sm:whitespace-normal text-xl sm:text-2xl group-hover:-skew-x-12 transition">{title}</h2>
+    <h3 class="text-sm mt-4">Date: {new Date(date).toLocaleDateString()}</h3>
   </div>
 </a>
