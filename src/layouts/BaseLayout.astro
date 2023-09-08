@@ -1,19 +1,25 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions, slide } from 'astro:transitions';
+import Navbar from '../components/Navbar';
 
 const {pageTitle} = Astro.props;
 
 ---
 
-<html lang="en">
+<html lang="en" transition:animate={slide({ duration: '0.5s'})}>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
+		<ViewTransitions />
 	</head>
-	<body>
-		<slot />
+	<body class="bg-slate-200">
+		<main>
+			<Navbar client:load/>
+			<slot />
+		</main>
 	</body>
 </html>
