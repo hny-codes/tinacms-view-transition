@@ -13,11 +13,20 @@
 }
 
 :root {
+  /* Accent */
+  --clr-pink: #ffd7f5;
 
+  --clr-brown: #9a2d2f;
 }
 
 @layer base {
   * {
     @apply font-LTAsus;
+  }
+}
+
+@layer components {
+  .button {
+    @apply bg-[--clr-brown] transition text-white py-1 px-4 rounded-3xl font-bold hover:brightness-125;
   }
 }
