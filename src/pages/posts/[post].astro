@@ -1,0 +1,30 @@
+---
+import { client } from '../../../tina/__generated__/client';
+import { TinaMarkdown } from 'tinacms/dist/rich-text';
+
+export async function getStaticPaths() {
+  const postResponse = await client.queries.postConnection();
+
+  const posts = postResponse.data.postConnection.edges?.map((post) => {
+    return { params: {post: post?.node?._sys.filename}}
+  })
+
+  return posts;
+}
+
+const {post} = Astro.params;
+
+// Current post
+const currentPost = await client.queries.post({
+  relativePath: `${post}.md`
+})
+
+---
+
+<main>
+  <div>
+    <h1>{currentPost.data.post.title}</h1>
+    <small>Date: {new Date(currentPost.data.post.posted).toLocaleDateString()}</small>
+    <TinaMarkdown content={currentPost.data.post.body} />
+  </div>
+</main>
